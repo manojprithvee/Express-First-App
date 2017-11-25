@@ -2,6 +2,8 @@
 const express = require("express");
 const hbs = require("hbs")
 const fs = require("fs")
+//Heroku Port
+const port = process.env.PORT || 3000
 //Exprees and hbsconfig
 app = express();
 app.set("view engine",'hbs');
@@ -26,11 +28,11 @@ app.use((req,res,next)=>{
     console.log(log)
     next();
 })
-app.use((req,res,next)=>{
-    res.render("maintenance.hbs",{
-        Title:"Under Maintenance"
-    })
-})
+// app.use((req,res,next)=>{
+//     res.render("maintenance.hbs",{
+//         Title:"Under Maintenance"
+//     })
+// })
 app.use(express.static(__dirname + "/public"));
 //Express get functions
 app.get("/", (req, res) => {
@@ -55,6 +57,6 @@ app.get("/bad",(req,res)=>{
     res.send({errorMessage:"test"})
 })
 //Express Bind
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("Server is up on  http://localhost:3000")
 })
