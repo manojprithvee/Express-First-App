@@ -53,6 +53,12 @@ app.get("/about",(req,res)=>{
         PageTitle :"About Page",   
     })
 });
+app.get("/projects",(req,res)=>{
+    // res.send("about page")
+    res.render("projects.hbs",{
+        PageTitle :"Project Page",   
+    })
+});
 app.get("/bad",(req,res)=>{
     res.send({errorMessage:"test"})
 })
